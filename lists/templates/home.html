@@ -1,9 +1,31 @@
 <html>
+
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
 <title>To-Do lists</title>
 
-<body>
-    <h1> To-Do lists: </h1>
-    <input name="" placeholder="Enter a to-do item" id="todo_text"></input>
+
+<body id="app">
+    <div class="container">
+        <h1 class="title"> To-Do lists: </h1>
+        <input class="input" name="" placeholder="Enter a to-do item" id="todo_text">
+        </input>
+        <table id="todo_table" class="table is-bordered mt-5">
+            <tr>
+                <th>
+                    todo text
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    1: Buy peacock feathers
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </body>
 
 </html>
