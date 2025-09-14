@@ -7,25 +7,49 @@
 <title>To-Do lists</title>
 
 
-<body id="app">
-    <div class="container">
-        <h1 class="title"> To-Do lists: </h1>
-        <input class="input" name="" placeholder="Enter a to-do item" id="todo_text">
+<body>
+    {% verbatim %}
+
+    <div class="container" id="app">
+        <h1 class="title"> To-Do lists: {{message}} </h1>
+        <input @keyup.enter="addTodo" v-model="message" class="input" name="" placeholder="Enter a to-do item"
+            id="todo_text">
         </input>
+        <p> test {{message}}</p>
         <table id="todo_table" class="table is-bordered mt-5">
             <tr>
                 <th>
-                    todo text
+                    Task
                 </th>
             </tr>
-            <tr>
+            <tr v-for="(item,index) in todoList">
                 <td>
-                    1: Buy peacock feathers
+                    {{(index+1) + ": "+item}}
                 </td>
             </tr>
         </table>
     </div>
+    {% endverbatim %}
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module">
+        const { createApp, ref, reactive } = Vue
+        createApp({
+            setup() {
+                const message = ref('')
+                const todoList = reactive([])
+                function addTodo() {
+                    todoList.push(message.value);
+                    message.value = '';
+                }
+                return {
+                    message,
+                    todoList,
+                    addTodo
+                }
+            }
+        }).mount('#app')
+    </script>
 </body>
 
 </html>
